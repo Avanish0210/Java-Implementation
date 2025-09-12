@@ -25,8 +25,7 @@ https://github.com/Avanish0210/Java-Implementation
 
 ## Credits
 
-Project developed by [Your Name]. Contributions welcome!
-- Avitar Team Members: Arpita Pateriya, Sanskriti Tailor, Neha Chandwani, Kumar Saurab, and Aastha Pateriya.
+developed by Avanish Pratap singh. Contributions welcome!
 
 ## License
 
