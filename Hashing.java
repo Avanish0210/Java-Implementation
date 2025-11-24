@@ -1,4 +1,4 @@
-package JAVA_IMPLEMENTATION;
+//package JAVA_IMPLEMENTATION;
 import java.util.*;
 public class Hashing {
     static class HashMap<K,V> { // generics
