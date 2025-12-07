@@ -100,6 +100,38 @@ public class Linked_List {
         return size;
     }
 
+    public void reverseIterate(){
+        if(head==null || head.next==null){
+            return;
+        }
+        Node prevNode = head;
+        Node currNode = head.next;
+        while(currNode != null){
+            Node nextNode = currNode.next;
+            currNode.next = prevNode;
+
+            //update
+            prevNode = currNode;
+            currNode = nextNode;
+
+        }
+        head.next = null;
+        head = prevNode;
+
+
+    }
+
+    public Node reverRecursive(Node head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node newHead = reverRecursive(head.next);
+        head.next.next=head;
+        head.next = null;
+
+        return newHead;
+    }
+
    
     public static void main(String args[]) {
         Linked_List list = new Linked_List();
@@ -108,17 +140,7 @@ public class Linked_List {
         list.addLast("list");
         list.printList();
 
-
-        list.addFirst("this");
-        list.printList();
-        System.out.println(list.getSize()); 
-
-
-        list.removeFirst();
-        list.printList();
-
-
-        list.removeLast();
+        list.reverseIterate();
         list.printList();
     }
 
