@@ -29,20 +29,14 @@ public class Linked_List {
 
     public void addLast(String data) {
         Node newNode = new Node(data);
-
-
         if(head == null) {
             head = newNode;
             return;
         }
-
-
         Node lastNode = head;
         while(lastNode.next != null) {
             lastNode = lastNode.next;
         }
-
-
         lastNode.next = newNode;
     }
 
@@ -59,7 +53,7 @@ public class Linked_List {
         System.out.println("null");
     }
 
-        public void removeFirst() {
+    public void removeFirst() {
         if(head == null) {
             System.out.println("Empty List, nothing to delete");
             return;
