@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 import javax.swing.plaf.metal.MetalTheme;
 
@@ -146,10 +144,71 @@ public class BinaryTrees{
         TreeInfo myInfo = new TreeInfo(myHeight, mydiam);
         return myInfo;
     }
+    static class pair{
+        Node n;
+        int hd;
+        pair(Node n , int hd){
+            this.n=n;
+            this.hd=hd;
+        }
+    }
+    public static void topView(Node root){
+        Queue<pair> q = new LinkedList<>();  //(Node , horizontalDIst)
+        Map<Integer , Integer> map = new HashMap<>();
+        q.add(new pair(root, 0)); 
+
+        while(q.size() > 0){
+            Node curr = q.peek().n;
+            int currHd = q.peek().hd;
+            q.poll();
+
+            if(!map.containsKey(currHd)){
+                map.put(currHd , curr.data);
+            }
+            if(curr.left != null){
+                q.add(new pair(curr.left , currHd-1));
+            }
+
+            if(curr.right != null){
+                q.add(new pair(curr.right , currHd+1));
+            }
+        }
+
+        for(var entry : map.entrySet()){
+            System.out.print(entry.getValue());
+        }
+    }
+
+    public static void bottomView(Node root){
+        Queue<pair> q= new LinkedList<>();
+        Map<Integer , Integer> map = new HashMap<>();
+        q.add(new pair(root, 0));
+
+        while(q.size()>0){
+            Node curr = q.peek().n;
+            int currHd = q.peek().hd;
+            q.poll();
+            map.put(currHd , curr.data);
+
+            if(curr.left !=null){
+                q.add(new pair(curr.left , currHd-1));
+            }
+            if(curr.right != null){
+                q.add(new pair(curr.right , currHd+1));
+            }
+
+        }
+        for(var entry : map.entrySet()){
+            System.out.print(entry.getValue());
+        }
+
+    }
     public static void main(String []args){
-        int nodes[]= {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
+        int nodes[]= {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(diameterApproach2(root).diam);
+        topView(root);
+        System.out.println();
+        bottomView(root);
     }
 }
