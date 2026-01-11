@@ -203,12 +203,21 @@ public class BinaryTrees{
         }
 
     }
+    public static void kthLevel(Node root , int k){
+        if(root==null){
+            return;
+        }
+        if(k==1){
+            System.out.print(root.data);
+            return;
+        }
+        kthLevel(root.left, k-1);
+        kthLevel(root.right, k-1);
+    }
     public static void main(String []args){
-        int nodes[]= {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+        int nodes[]= {1,2,7,-1,-1,-1,3,4,-1,-1,5,-1,-1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        topView(root);
-        System.out.println();
-        bottomView(root);
+        kthLevel(root, 3);
     }
 }
