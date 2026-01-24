@@ -32,6 +32,7 @@ public class BinaryTrees{
         }
     }
 
+
     public static void preorder(Node root){
         if(root == null) return;
         System.out.print(root.data+ " ");
@@ -214,10 +215,24 @@ public class BinaryTrees{
         kthLevel(root.left, k-1);
         kthLevel(root.right, k-1);
     }
+    static int sumTree(Node root){
+        if(root==null) return 0;
+        int left=sumTree(root.left);
+        int right = sumTree(root.right);
+        root.data += left + right;
+
+        return root.data;
+
+    }
     public static void main(String []args){
-        int nodes[]= {1,2,7,-1,-1,-1,3,4,-1,-1,5,-1,-1};
+        int nodes[]= {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        kthLevel(root, 3);
+        System.out.println("before Conversion :" );
+        preorder(root);
+        System.out.println();
+        System.out.println("after conversion");
+        sumTree(root);
+        preorder(root);
     }
 }
