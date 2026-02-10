@@ -122,6 +122,44 @@ public class BST {
         list.remove(list.size()-1);
 
     }
+    Node rightMostInLeftSubtree(Node root){
+        Node ans = null;
+        while(root!=null){
+            ans = root;
+            root = root.right;
+        }
+        return ans;
+    }
+    Node leftMostInRightSubtree(Node root){
+        Node ans = null;
+        while(root!=null){
+            ans = root;
+            root = root.left;
+        }
+        return ans;
+    }
+
+    int[] getPredSucc(Node root , int key){
+        Node curr = root;
+        Node pred = null;
+        Node succ = null;
+
+        while(curr!=null){
+            if(key<curr.data){
+                succ = curr;
+                curr = curr.left;
+            }else if(key > curr.data){
+                pred = curr;
+                curr = curr.right;
+            }else{
+                pred = rightMostInLeftSubtree(curr);
+                succ = leftMostInRightSubtree(curr);
+                break;
+            }
+        }
+        return new int[]{pred.data , succ.data};
+
+    }
     public static void main(String []args){
         int values[]={8, 5, 3, 1, 4, 6, 10, 11, 14};
         Node root = null;
