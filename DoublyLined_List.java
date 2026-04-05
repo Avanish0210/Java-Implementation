@@ -33,7 +33,7 @@ public class DoublyLined_List {
             head = newNode;
             tail = newNode;
         }else{
-            newNode.prev = head;
+            newNode.prev = tail;
             tail.next = newNode;
             tail = newNode;
 
