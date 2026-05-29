@@ -49,11 +49,7 @@ public class LargestBst {
 
         return Info(Integer.MIN_VALUE , Integer.MAX_VALUE , Math.max(left.sz, right.sz));
     }
-    int largestBSTinBT(Node root){
-        return helper(root);
-        
 
-    }
     public static void main(String []args){
 
         Node root = new Node(10);
