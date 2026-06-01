@@ -1,22 +1,23 @@
 public class RabinKarpAlgo {
-    static final int d = 256; // Number of characters in input alphabet
+    static final int base = 256; // Number of characters in input alphabet
 
-    static void search(String pattern , String text , int q){
+    static void search(String pattern , String text){
         int m = pattern.length();
         int n = text.length();
 
         int p = 0;// hash value for pattern
         int t = 0;// hash value for text window
         int h = 1;
+        int mod = 101; // A prime number
 
         for(int i=0; i<m-1; i++){
-            h = (h*d)%q;
+            h = (h*base)%mod;
         }
 
         //calculate initial hash value
         for(int i=0; i<m; i++){
-            p = (d*p + pattern.charAt(i))%q;
-            t = (d*t + text.charAt(i))%q;
+            p = (base*p + pattern.charAt(i))%mod;
+            t = (base*t + text.charAt(i))%mod;
         }
 
         //slide pattern ocver text
@@ -40,12 +41,12 @@ public class RabinKarpAlgo {
 
             // Calculate next window hash
             if (i < n - m) {
-                t = (d * (t - text.charAt(i) * h)
-                        + text.charAt(i + m)) % q;
+                t = (t - text.charAt(i) * h) % mod;
+                t = (t * 256 + text.charAt(i+m))%mod;
 
                 // Handle negative hash value
                 if (t < 0)
-                    t += q;
+                    t += mod;
             }
         }
 
@@ -54,8 +55,6 @@ public class RabinKarpAlgo {
         String text = "ABCCDDAEFG";
         String pattern = "CDD";
 
-        int prime = 101;
-
-        search(pattern, text, prime);
+        search(pattern, text);
     }
 }
