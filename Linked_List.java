@@ -103,7 +103,6 @@ public class Linked_List {
         while(currNode != null){
             Node nextNode = currNode.next;
             currNode.next = prevNode;
-
             //update
             prevNode = currNode;
             currNode = nextNode;
