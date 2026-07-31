@@ -151,7 +151,7 @@ public class BST {
             }else if(key > curr.data){
                 pred = curr;
                 curr = curr.right;
-            }else{
+            }else{  
                 pred = rightMostInLeftSubtree(curr);
                 succ = leftMostInRightSubtree(curr);
                 break;
@@ -171,6 +171,6 @@ public class BST {
         inorder(root);
         System.out.println();
 
-        printRoot2Leaf(root , new ArrayList<>() );
+        // printRoot2Leaf(root , new ArrayList<>() );
     }
 }

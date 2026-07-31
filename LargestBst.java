@@ -44,10 +44,10 @@ public class LargestBst {
             int currMin = Math.min(root.data, left.min);
             int currMax = Math.max(root.data, right.max);
             int currSz = left.sz + right.sz + 1;
-            return Info(currMin , currMax , currSz);
+            return new Info(currMin , currMax , currSz);
         }
 
-        return Info(Integer.MIN_VALUE , Integer.MAX_VALUE , Math.max(left.sz, right.sz));
+        return new Info(Integer.MIN_VALUE , Integer.MAX_VALUE , Math.max(left.sz, right.sz));
     }
 
     public static void main(String []args){

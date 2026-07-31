@@ -43,7 +43,7 @@ public class UndirectedGraph {
 
         for(int i=0 ; i<graph[curr].size() ; i++){
             Edge e = graph[curr].get(i);
-            if(vis[curr]==true && par!=e.dest){
+            if(vis[e.dest]==true && par!=e.dest){
                 return true;
             }
             if(!vis[e.dest]){
